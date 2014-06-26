@@ -26,9 +26,10 @@ rankhospital<-function(state,outcome,num = "best"){
                 y<-which.max(subset.outcome[,x])
         subset.outcome[y,2]
         } else {
-                y<-subset.outcome[order(subset.outcome[,x],decreasing=TRUE
-                                        ,na.last=NA),]
+                subset.outcome[,x]<-as.numeric(subset.outcome[,x])
+                y<-subset.outcome[order(subset.outcome[,x],na.last=NA),]
+                
+                
                 y[num,2]
         }
-        
 }
