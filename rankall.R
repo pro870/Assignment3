@@ -47,9 +47,12 @@ rankall<- function(outcome,num = "best"){
                 for (i in 1:54){
                         a<-data[[i]]
                         y<-a[order(a[,x],na.last=NA),]
-                        
-                        b<-y[num,2]
-                        c<-cbind(b,y[num,7])
+                        value<-y[num,x]
+                        heyMa.subset<-subset(y,y[,x] == value )
+                        heyMA.subset<-heyMa.subset[order(heyMa.subset[,2]
+                                                         ,na.last=NA),]
+                        b<-heyMa.subset[1,2]
+                        c<-cbind(b,heyMa.subset[1,7])
                         hospital.list<-rbind(hospital.list,c)
                         
                 }
