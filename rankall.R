@@ -4,10 +4,7 @@ rankall<- function(outcome,num = "best"){
         outcome.data<-read.csv("outcome-of-care-measures.csv"
                                , colClasses="character")
         hospital.list<-data.frame()
-        
-      #  if (state %in% outcome.data[,7] == "FALSE") {
-         #       stop("invalid state")             
-        #}
+
         if (outcome %in% list.outcomes == "FALSE") {
                 stop("invalid outcome")
         }
