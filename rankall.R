@@ -12,15 +12,12 @@ rankall<- function(outcome,num = "best"){
         if (outcome == "heart attack") {
                 x<- 11 
                 outcome.data[,x]<-as.numeric(outcome.data[,x])
-                outcome.data<-outcome.data[order(outcome.data[,x],na.last=NA),]
         } else if (outcome == "heart failure") {
                  x<- 17 
                  outcome.data[,x]<-as.numeric(outcome.data[,x])   
-                 outcome.data<-outcome.data[order(outcome.data[,x],na.last=NA),]
                } else {
                  x<- 23
                  outcome.data[,x]<-as.numeric(outcome.data[,x])   
-                 outcome.data<-outcome.data[order(outcome.data[,x],na.last=NA),]
         }
         
         data<-split(outcome.data,outcome.data$State)
@@ -46,16 +43,14 @@ rankall<- function(outcome,num = "best"){
         } else {
                 for (i in 1:length(data)){
                         a<-data[[i]]
-                        value<-a[num,x]
-                         heyMa.subset<-subset(a,a[,x] == value )
-                         heyMA.subset<-heyMa.subset[order(heyMa.subset[,2]),]
-                      # c<-cbind(a[num,2],a[num,7])
-                        c<-cbind(heyMa.subset[1,2],heyMa.subset[1,7])
-                         hospital.list<-rbind(hospital.list,c)
-                       
+                             a<-a[order(a[,7],a[,x],a[,2]),]
+                             c<-cbind(a[num,2],a[num,7])
+                         
+                        hospital.list<-rbind(hospital.list,c)
                 }
         }
-      colnames(hospital.list)<-c("hospital","state")
+    
+        colnames(hospital.list)<-c("hospital","state")
       hospital.list      
 }
 
